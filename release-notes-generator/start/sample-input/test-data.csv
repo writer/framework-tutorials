@@ -1,0 +1,307 @@
+Description,Labels
+"We need to review, formalize, and document security event structure.
+ 
+
+ ### Phase I
+ - [x] Document all fields and create documents describing all log fields:
+  - [x] Access Log
+  - [x] WAF Security Event
+  - [x] Service Policy
+  - [x] Bot Defense Security Event
+ - [x] Delete irrelevant fields (not relevant to customers, not used internally)
+ - [x] Hide fields irrelevant to customers (move to `internal_info` to make them invisible to customers).
+ 
+
+ ### Phase II
+ - [ ] Hide irrelevant fields in Lightning
+ - [ ] Hide irrelevant fields in Global Log Receiver.
+ - [x] Create a document for the ""API access log"", describing all log fields.
+ - [x] Rename the misleading field `calculated_action` to `recommended_action`
+ 
+
+ **Note:**
+ Some attributes have been added during the chain, should get from @user1 the components chain to validate from where to delete each attribute.
+ 
+
+ ---
+ https://test.io/features/WESH-715","Jan-16-2024-Release,Release-Note-Required::NO,area/AppSecurity,feature-status::in-development,logging,priority::medium,specifications"
+"#### Release Notes Info
+ 
+
+ Release-Note-Summary: New action for L7 DDoS auto mitigation
+ 
+
+ Release-Note-Detail: L7 DDoS now supports JavaScript Challenge as one of the mitigation options in addition to blocking. This option provides flexibility for customers, to choose an action of their choice to mitigate volumetric DDoS attacks
+ 
+
+ #### Description 
+ Today DoS mitigation object can only block suspicious sources. We should add support for additional actions: 
+ 
+
+ - JS Challenge
+ - Captcha
+ - Allow (for internal use to cover allow few deny all use case)
+ 
+
+ Phase 1:
+ 
+
+ JS Challenge
+ 
+
+ - Schema
+ 1. Update EnableDDoSDetectionSetting configuration to support Action property. Two supported actions in this phase will be Blocked (default) and JS Challenge.
+ 2. Add JSChallenge action to L7AclAction enum.
+ 3. Hide Cookie Expiration property as from now on we plan to use Session cookie for JS Challenge.
+ 
+
+ - Akar: 
+ 1. If JS Challenge action is selected
+ - Never create FastAcl even if we block by IP.
+ - Create L7Acl rule with JS Challenge action.
+ - Update JS Challenge configuration on vhost level.
+ 
+
+ - Hello
+ 1. Propagate JS Challenge configuration from vhost to Depot
+ 
+
+ @j.smith","Eng-QTR::CY24Q1,Jan-16-2024-Release,Release-Note-Required::Feature,area/AppSecurity,feature-status::in-development,priority::medium"
+"_____________________________
+ <details><summary>Click to expand for more info on Feature Status and Workflow </summary>
+ 
+
+ Feature goes through the following states and is tracked with labels
+ 
+
+ 
+
+ **Open** => <br> 
+ **[PM Area]** ~""feature-status::in-plm-backlog"" => ~""feature-status::in-plm-design"" => ~""feature-status::in-ux-backlog"" => ~""feature-status::in-plm-ux-design"" => <br> **[Engg Area]** ~""feature-status::in-engg-backlog"" => ~""feature-status::in-engg-design"" => ~""feature-status::in-resource-plan"" => ~""feature-status::in-development"" => ~""feature-status::in-test"" => <br> **[PM Area]** ~""feature-status::ready-to-ship"" => <br>
+ **Closed**
+ 
+
+ | Status Labels | Description |
+ | ------ | ------ |
+ | Open | Indicates a new feature waiting for PM evaluation |
+ | ~""feature-status::in-plm-backlog"" | Indicates PM considered the Feature and needs to start Analysis of Requirements |
+ | ~""feature-status::in-plm-design"" | Indicates PM is working on PRD & prioritization |
+ | ~""feature-status::in-ux-backlog"" | Indicates waiting for UX team to evaluate for required UX changes/suggestions |
+ | ~""feature-status::in-plm-ux-design"" | Indicates UX team is working on the UX Design changes for implementation |
+ | ~""feature-status::in-engg-backlog"" | Indicates Requirements are understood, pending Engg Design |
+ | ~""feature-status::in-engg-design"" | Indicates Engg Design in-progress |
+ | ~""feature-status::in-resource-plan"" | Indicates Design complete, pending development resources allocation |
+ | ~""feature-status::in-development"" | Indicates Development in-progress, **delivery release/date identified** |
+ | ~""feature-status::in-test"" | Indicates Testing in-progress |
+ | ~""feature-status::ready-to-ship"" | Indicates Feature ready from software perspective and Solution Engg, and Tech Writers team working on finalizing the things |
+ | Closed | Indicates Feature Shipped |
+ 
+
+ </details>
+ 
+
+ _____________________________
+ 
+
+ ##### End to End Feature Owner - @user2 
+ 
+
+ 
+
+ #### Release Notes Info
+  Release-Note-Summary: Introducing Detailed Events in the Synthetic Monitoring Service.
+ 
+
+  Release-Note-Detail: Users can triage issues faster and dive deeper into critical events with `Detailed Events` in synthetic HTTP and DNS monitors in the `Events` table. 
+ 
+
+ 
+
+ #### TOI/Wiki 
+  * Provide the links to TOI/Wiki here
+ 
+
+  
+ 
+
+ #### Demo Recordings
+  * Provide the link(s) here
+ 
+
+ _____________________________
+ 
+
+ ## Description
+ Synthetic monitoring customers want the ability to the view the verbose output/response of the synthetic monitor checks they are running against their endpoints to understand what issues and outages their end users are facing when using their applications.
+ 
+
+ This would be a minor enhancement to the existing events design that exists in the service today.
+ 
+
+ _____________________________
+ 
+
+ ## Tasks
+ Format: 
+ 
+
+  Status ==> ~""status::todo"" (or) ~""status::doing"" (or) ~""status::fixed"" (or) ~""status::blocked""
+ 
+
+  ""Due Date"" ==> DD-MON-YYYY
+ 
+
+ #### Design 
+ Some areas may be NA for some features. Feature owner to add feature specific areas, if any.
+ 
+
+ | Type | Summary | Owner(s) | Approver(s) | Document Link |
+ | ----------------- | ------- | -------- | ----------- | ------------- |
+ | UX |  | |  |  |
+ | SRE  |  | |  |  |
+ | UI Config  |  | |  |  |
+ | UI Monitoring  |  | |  |  |
+ | Schema |  | |  |  |
+ | UI Automation  |  | |  |  |
+ | API Automation |  | |  |  |
+ | Security Review  | Security Review of the Architecture/Design before Implementation begins | |  Security Architecture Team |  [Please open a Security Review ticket](https://gitlab.com/nextgen/nextgen.io/secops/-/issues/new?issuable_template=security_review_request#) |
+  
+ 
+
+ #### Implementation 
+ 
+
+ | Type / Component | Summary | Owner(s) | Due Date | Status | Comments |
+ | ---------------- | ------- | -------- | -------- | ------ | -------- |
+ | |  | | | | |
+ | |  | | | | |
+ | |  | | | | |
+ | |  | | | | |
+ | Security Review  | Security Review after code complete | |  Security Architecture Team |  | Please update the Security Review ticket
+ 
+
+ 
+
+ _____________________________
+ 
+
+ 
+
+ CC: @dev1 @dev2 @dev3
+ 
+
+ **DO NOT EDIT THE SECTIONS BELOW.**
+ 
+
+ ---
+ 
+
+ ### Request for Security Review
+ 
+
+ - [ ] Security Reivew of Architecture complete @smith.joan
+ - [ ] Security Review after Code Complete @smith.joan
+ 
+
+ ### Security Review Status
+ 
+
+ - [ ] Reviewed and Approved Architecture
+ - [ ] Reviewed and Approved Architecture with Conditions
+ - [ ] Reviewed and Approved Code Complete
+ - [ ] Reviewed and Approved Code Complete with Conditions
+ - [ ] Request for more Information","Eng-QTR::CY24Q1,Jan-16-2024-Release,Release-Note-Required::Feature,gov/service-onboarding,pm-area/next-genxc-beacon,specifications"
+"#### Release Notes Info
+ -----------
+ Release-Note-Summary: Fixed Access Issues for Tenants with Tenant Access Policy set
+ 
+
+ Release-Note-Detail: Resolved issue with Incorrect client IP extraction resulting in failure of Tenant access.
+ 
+
+ -----------
+ 
+
+ - **Environment:** prod
+ - **Tenant:**
+ - **Namespace:**
+ - **Site:**
+ - **Site Software Version:**
+ - **Time of problem:**
+ - **Relevant Objects:**
+ 
+
+ ---
+ 
+
+ **Detailed Description/Screenshots:**
+ 
+
+ During production Sep-12 upgrade window, we switched traffic from rainbow to rainbowprime. After that BigCo start to see 403 on their tenant access.
+ 
+
+ ![image](/uploads/8d49685353545afb2ea28de5c6de9203/image.png)
+ 
+
+ By checking with team we think the issue is on the tenant service policy allowed IP are not working.
+ 
+
+ https://gitlab.com/next-gen/nextgen.io/sre-prod-model/-/blob/main/ongoing/yazr/objects/customer/dev-tenant/custom_rbac.yaml#L79
+ 
+
+ We have added custom CNAME for those tenant below to switch their traffic back to rainbow, after that BigCo confirmed it is working fine.
+ 
+
+ ```plaintext
+ 
+
+ prd-tenant.console.ves
+ dev-tenant.console.ves 
+ dev-uci.console.ves
+ prd-uci.console.ves
+ aoins.console.ves
+ blueshore.console.ves
+ fnni.console.ves
+ next-genxc-ops.console.ves
+ next-genxc-ops-stg.console.ves
+ next-gen-silverline.console.ves
+ ```
+ 
+
+ Please check how tenant access policy will work under rainbowprime
+ 
+
+ \#### Release Notes Info
+ 
+
+ Release-Note-Summary: Start to support tenant access policy on new console endpoint
+ 
+
+ Release-Note-Detail: In Sep release we switched NextGenXC console to a new endpoint, since tenant access policy is not supported, some customer are staying on the old endpoint. From this release new console endpoint start to support tenant access policy.","2024-Jan,Eng-QTR::CY24Q1,Hardening,Jan-16-2024-Release,READY-FOR-TEST,Release-Note-Required::Issue-GC-RE,area/eng/be/saas,customer::bigco,env::prod,feature-status::in-test,pm-area/next-genxc-platform,priority::high,product/owner/saas::joan-smith,technical"
+"Row 41 in https://next-gen.sharepoint.com/:x:/r/sites/NextGenXC/_layouts/15/Doc.aspx?sourcedoc=%7BF329AB0E-4FSF-5420-9AZE-04BF6FA2C51%7D&file=XC%20Issues%20BigCo%20Master%20Tracker%20v1.0.xlsx&action=default&mobileredirect=true
+ 
+
+ Node software Changelog include OS version updates and a brief reason for the version bump to help educate customers inform on their version upgrade decision planning.","2024-Jan,Eng-QTR::CY24Q1,Hardening,Jan-16-2024-Release,Release-Note-Required::NO,area/eng/sre,ce-process,customer::bigco,feature-status::in-engg-backlog,pm-area/next-genxc-platform,priority::high,product/owner/saas::joan-smith,program/ce-stability"
+"env: Demo1
+ 
+
+ The change made to replace padding with grid gap seems to have caused issues in dashboard report emails
+ 
+
+ https://gitlab.com/next-gen/nextgen.io/rainbow/-/issues/10490.
+ 
+
+ ![image](/uploads/a101e9ed1a72a96505c1a62558f6288b/image.png)
+ 
+
+ Figma:
+ 
+
+ ![image.png](/uploads/785744760cf22d5a407a519ddfcde46d/image.png)
+ 
+
+ cc @dev1 @dev2","2023-Nov,Eng-QTR::CY24Q1,Jan-16-2024-Release,READY-FOR-TEST,Release-Note-Required::NO,console/monitoring,env::prod,month/week4"
+"planning to cover below UI automation gap and hardening tasks:
+ 1. RBAC automation coverage : https://gitlab.com/next-gen/nextgen/nexgen.io/hello/-/issues/6206
+ 2. Clone objects test : https://gitlab.com/next-gen/nextgen/nexgen.io/hello/-/issues/6106  
+ 3. Disallowed response code : https://gitlab.com/next-gen/nextgen/nexgen.io/hello/-/issues/6287","Eng-QTR::CY24Q1,Jan-16-2024-Release,Release-Note-Required::NO,area/test"

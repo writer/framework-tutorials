@@ -1,0 +1,84 @@
+
+<details>
+    <summary class="category"> New Feature</summary>
+    
+<details>
+        <summary class="summary">  New JS Challenge action for L7 DDoS auto mitigation</summary>
+        <p class="description"><ul class="list">
+<li>L7 DDoS now supports JavaScript Challenge as a new mitigation option in addition to blocking.</li>
+<li>This provides customers with more flexibility in choosing how to mitigate volumetric DDoS attacks.</li>
+<li>The JavaScript Challenge action can be configured in the EnableDDoSDetectionSetting configuration.</li>
+<li>Once enabled, Akar will never create FastAcl even if blocking by IP, and will instead create an L7Acl rule with the JavaScript Challenge action.</li>
+</ul></p>
+    </details>
+
+
+<details>
+        <summary class="summary">  Detailed Events in Synthetic Monitoring Service</summary>
+        <p class="description"><ul class="list">
+<li>Synthetic monitoring customers can now view the verbose output/response of their synthetic monitor checks in the `Events` table. This will help them understand what issues and outages their end users are facing when using their applications.</li>
+</ul></p>
+    </details>
+
+</details>
+
+<details>
+    <summary class="category"> Caveat</summary>
+    
+<details>
+        <summary class="summary">  Security event structure review and documentation</summary>
+        <p class="description"><ul class="list">
+<li>Security event structure is being reviewed, formalized, and documented.</li>
+<li>All log fields will be documented, including Access Log, WAF Security Event, Service Policy, and Bot Defense Security Event.</li>
+<li>Irrelevant fields will be deleted or hidden from customers.</li>
+<li>A document describing all API access log fields will be created.</li>
+<li>The misleading field `calculated_action` will be renamed to `recommended_action`.</li>
+</ul></p>
+    </details>
+
+
+<details>
+        <summary class="summary">  Node software changelog includes OS version updates</summary>
+        <p class="description"><ul class="list">
+<li>Node software Changelog will now include OS version updates and a brief explanation for the version bump.</li>
+<li>This will help educate customers and inform their version upgrade decision planning.</li>
+<li>This change is part of our ongoing commitment to providing our customers with the best possible experience.</li>
+</ul></p>
+    </details>
+
+
+<details>
+        <summary class="summary">  Dashboard report email display issues resolved</summary>
+        <p class="description"><ul class="list">
+<li>The change made to replace padding with grid gap has caused issues in dashboard report emails.</li>
+<li>This issue can be seen in the Figma design.</li>
+<li>See the linked GitLab issue for more details.</li>
+<li>@dev1 and @dev2 are copied on this issue.</li>
+</ul></p>
+    </details>
+
+</details>
+
+<details>
+    <summary class="category"> Fixed Issue</summary>
+    
+<details>
+        <summary class="summary">  Tenant access policy now supported on new console endpoint</summary>
+        <p class="description"><ul class="list">
+<li>Fixed an issue where tenants with Tenant Access Policy set were unable to access the console due to incorrect client IP extraction.</li>
+<li>Added support for Tenant Access Policy on the new console endpoint.</li>
+</ul></p>
+    </details>
+
+
+<details>
+        <summary class="summary">  Disallowed response code hardening</summary>
+        <p class="description"><ul class="list">
+<li>Improved UI automation coverage for RBAC, clone objects testing, and disallowed response codes.</li>
+<li>Enhanced hardening measures to strengthen security and reliability.</li>
+<li>Streamlined user experience with consistent terminology and improved access to reference documentation.</li>
+<li>Introduced new status workflow for AWS VPC Site, Azure VNET Site, AWS TGW Site, and GCP VPC Site for simplified cloud configuration and validation.</li>
+</ul></p>
+    </details>
+
+</details>

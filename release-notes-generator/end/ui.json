@@ -1,0 +1,448 @@
+{
+    "metadata": {
+        "writer_version": "0.6.2rc2"
+    },
+    "components": {
+        "root": {
+            "id": "root",
+            "type": "root",
+            "content": {
+                "appName": "Release Notes Generator",
+                "emptinessColor": "#f0f0f0"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "c0f99a9e-5004-4e75-a6c6-36f17490b134": {
+            "id": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "type": "page",
+            "content": {
+                "pageMode": "compact"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "root",
+            "handlers": {},
+            "visible": true
+        },
+        "bebc5fe9-63a7-46a7-b0fa-62303555cfaf": {
+            "id": "bebc5fe9-63a7-46a7-b0fa-62303555cfaf",
+            "type": "header",
+            "content": {
+                "text": "RELEASE NOTES GENERATOR"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": true
+        },
+        "9f8bulkgxwlzffro": {
+            "id": "9f8bulkgxwlzffro",
+            "type": "steps",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": true
+        },
+        "2c072dr8ecpnp8vr": {
+            "id": "2c072dr8ecpnp8vr",
+            "type": "step",
+            "content": {
+                "name": "Load a CSV file",
+                "isCompleted": "@{step1.completed}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "9f8bulkgxwlzffro",
+            "handlers": {}
+        },
+        "cfxzq42w0g3amzb5": {
+            "id": "cfxzq42w0g3amzb5",
+            "type": "step",
+            "content": {
+                "name": "Release notes",
+                "isCompleted": "no"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "9f8bulkgxwlzffro",
+            "handlers": {},
+            "visible": true
+        },
+        "2z47dyxxz19kimjl": {
+            "id": "2z47dyxxz19kimjl",
+            "type": "fileinput",
+            "content": {
+                "label": "Please upload your CSV file"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "2567ut740n22riiu",
+            "handlers": {
+                "wf-file-change": "onchangefile_handler"
+            },
+            "visible": true
+        },
+        "cquhievx56p7jj2g": {
+            "id": "cquhievx56p7jj2g",
+            "type": "section",
+            "content": {
+                "title": "Raw CSV",
+                "cssClasses": "",
+                "containerBackgroundColor": ""
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "2c072dr8ecpnp8vr",
+            "handlers": {},
+            "visible": true
+        },
+        "yvl0uafmvozozmxy": {
+            "id": "yvl0uafmvozozmxy",
+            "type": "button",
+            "content": {
+                "text": "Generate",
+                "isDisabled": "@{step1.generate-button-state}",
+                "icon": "laps",
+                "cssClasses": ""
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "h2ohmrz2sukc7957",
+            "handlers": {
+                "wf-click": "handle_generate_button_click"
+            },
+            "visible": true
+        },
+        "91rmc68xr1dwndka": {
+            "id": "91rmc68xr1dwndka",
+            "type": "separator",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "cfxzq42w0g3amzb5",
+            "handlers": {},
+            "visible": true
+        },
+        "d1xr2v3lccf4b6mk": {
+            "id": "d1xr2v3lccf4b6mk",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "cfxzq42w0g3amzb5",
+            "handlers": {},
+            "visible": true
+        },
+        "r5xl70a500gjf770": {
+            "id": "r5xl70a500gjf770",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "d1xr2v3lccf4b6mk",
+            "handlers": {},
+            "visible": true
+        },
+        "gv5dsgl1fvi3v8nw": {
+            "id": "gv5dsgl1fvi3v8nw",
+            "type": "tabs",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "r5xl70a500gjf770",
+            "handlers": {},
+            "visible": true
+        },
+        "x4y0dxs744lbrklc": {
+            "id": "x4y0dxs744lbrklc",
+            "type": "tab",
+            "content": {
+                "name": "Release notes"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "gv5dsgl1fvi3v8nw",
+            "handlers": {},
+            "visible": true
+        },
+        "ekyagyarecawhp22": {
+            "id": "ekyagyarecawhp22",
+            "type": "metric",
+            "content": {
+                "note": "+",
+                "metricValue": "@{metrics.Total}",
+                "name": " Number of Release Notes Generated"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "x4y0dxs744lbrklc",
+            "handlers": {},
+            "visible": true
+        },
+        "zzttoadh7zdi697n": {
+            "id": "zzttoadh7zdi697n",
+            "type": "dataframe",
+            "content": {
+                "dataframe": "@{step1.raw_csv}",
+                "wrapText": "yes",
+                "enableSearch": "no",
+                "separatorColor": "#d4b2f7",
+                "cssClasses": "",
+                "showIndex": "no",
+                "enableDownload": "yes",
+                "displayRowCount": "10",
+                "useMarkdown": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "cquhievx56p7jj2g",
+            "handlers": {},
+            "visible": true
+        },
+        "2rba3n4fl8o4j3jv": {
+            "id": "2rba3n4fl8o4j3jv",
+            "type": "dataframe",
+            "content": {
+                "dataframe": "@{step2.release-notes}",
+                "wrapText": "yes",
+                "showIndex": "no",
+                "enableDownload": "yes",
+                "displayRowCount": "10",
+                "enableSearch": "yes",
+                "separatorColor": "#d4b2f7",
+                "useMarkdown": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "x4y0dxs744lbrklc",
+            "handlers": {},
+            "visible": true
+        },
+        "23xckvueigh8ptun": {
+            "id": "23xckvueigh8ptun",
+            "type": "image",
+            "content": {
+                "src": "@{logo_image_path}",
+                "caption": "",
+                "maxWidth": "100"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "bebc5fe9-63a7-46a7-b0fa-62303555cfaf",
+            "handlers": {},
+            "visible": true
+        },
+        "h4n81t1ub1vx06xt": {
+            "id": "h4n81t1ub1vx06xt",
+            "type": "message",
+            "content": {
+                "message": "@{step1.processing-message}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "2c072dr8ecpnp8vr",
+            "handlers": {},
+            "visible": "step1.processing-message"
+        },
+        "mbz7u4wwt4znf9hd": {
+            "id": "mbz7u4wwt4znf9hd",
+            "type": "button",
+            "content": {
+                "text": "Download HTML"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "wrosu3wd2bwolax4",
+            "handlers": {
+                "wf-click": "handle_file_download"
+            },
+            "visible": true
+        },
+        "rp37ycagekrtn611": {
+            "id": "rp37ycagekrtn611",
+            "type": "tab",
+            "content": {
+                "name": "Formatted release notes"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "gv5dsgl1fvi3v8nw",
+            "handlers": {},
+            "visible": true
+        },
+        "wrosu3wd2bwolax4": {
+            "id": "wrosu3wd2bwolax4",
+            "type": "html",
+            "content": {
+                "element": "div",
+                "styles": "{\n  \"padding\": \"16px\",\n  \"min-height\": \"64px\",\n  \"min-width\": \"64px\",\n  \"border-radius\": \"8px\",\n  \"background\": \"white\"\n}",
+                "attrs": "",
+                "htmlInside": "@{step2.formatted-release-notes}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "rp37ycagekrtn611",
+            "handlers": {},
+            "visible": true
+        },
+        "ucjcbwq77vc9v7wy": {
+            "id": "ucjcbwq77vc9v7wy",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "2c072dr8ecpnp8vr",
+            "handlers": {},
+            "visible": true
+        },
+        "h2ohmrz2sukc7957": {
+            "id": "h2ohmrz2sukc7957",
+            "type": "column",
+            "content": {
+                "width": "1",
+                "contentVAlign": "end",
+                "contentHAlign": "start"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "ucjcbwq77vc9v7wy",
+            "handlers": {},
+            "visible": true
+        },
+        "86hf221h5pgiyxz8": {
+            "id": "86hf221h5pgiyxz8",
+            "type": "button",
+            "content": {
+                "text": "Back",
+                "icon": "arrow_back"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "r5xl70a500gjf770",
+            "handlers": {
+                "wf-click": "handle_back_button_click"
+            },
+            "visible": true
+        },
+        "o9xes9csjammvy62": {
+            "id": "o9xes9csjammvy62",
+            "type": "metric",
+            "content": {
+                "name": " ",
+                "metricValue": "@{metrics.fixed_issues}",
+                "note": "+Fixed Issues"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "vn452kezoitjsceu",
+            "handlers": {},
+            "visible": true
+        },
+        "4mpply5smxni73e6": {
+            "id": "4mpply5smxni73e6",
+            "type": "metric",
+            "content": {
+                "name": " ",
+                "metricValue": "@{metrics.caveats}",
+                "note": "+caveats"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "zvgi7g3y828s2qpl",
+            "handlers": {},
+            "visible": true
+        },
+        "zdq21f5qdjs1xmop": {
+            "id": "zdq21f5qdjs1xmop",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "wrosu3wd2bwolax4",
+            "handlers": {},
+            "visible": true
+        },
+        "9k4ixqft66v4c3ue": {
+            "id": "9k4ixqft66v4c3ue",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "zdq21f5qdjs1xmop",
+            "handlers": {},
+            "visible": true
+        },
+        "zvgi7g3y828s2qpl": {
+            "id": "zvgi7g3y828s2qpl",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "zdq21f5qdjs1xmop",
+            "handlers": {},
+            "visible": true
+        },
+        "vn452kezoitjsceu": {
+            "id": "vn452kezoitjsceu",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "zdq21f5qdjs1xmop",
+            "handlers": {},
+            "visible": true
+        },
+        "a6xn1p3oriaf40mb": {
+            "id": "a6xn1p3oriaf40mb",
+            "type": "metric",
+            "content": {
+                "name": " ",
+                "metricValue": "@{metrics.new_features}",
+                "note": "+New Features"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "9k4ixqft66v4c3ue",
+            "handlers": {},
+            "visible": true
+        },
+        "2567ut740n22riiu": {
+            "id": "2567ut740n22riiu",
+            "type": "column",
+            "content": {
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "ucjcbwq77vc9v7wy",
+            "handlers": {},
+            "visible": true
+        },
+        "i55faih4f8hgi9tw": {
+            "id": "i55faih4f8hgi9tw",
+            "type": "column",
+            "content": {
+                "width": ".5"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "ucjcbwq77vc9v7wy",
+            "handlers": {},
+            "visible": true
+        }
+    }
+}

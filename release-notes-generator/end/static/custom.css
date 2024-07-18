@@ -1,0 +1,22 @@
+.category{
+	font-size: larger;
+	padding-bottom: 1em;
+	padding-top: 1em;
+	font-weight: bold;
+}
+
+.summary{
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-left: 1em;
+	
+}
+
+.description{
+	margin-left: 3em;
+	color:gray;
+}
+
+.list {
+	margin-left: 3em;
+}
