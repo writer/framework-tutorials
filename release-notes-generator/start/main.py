@@ -9,7 +9,7 @@ from html_template import format_output
 
 
 # Initialise the state
-wf.init_state({
+initial_state = wf.init_state({
     "my_app": {
         "title": "RELEASE NOTES GENERATOR"
     },
