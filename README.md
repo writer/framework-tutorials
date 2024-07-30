@@ -1,5 +1,5 @@
 # Writer Framework tutorials
-This is a repo for Writer Frameowrk tutorial applications. Each application contains a `start` and `end` folder.
+This is a repo for Writer Frameowrk tutorial and sample applications. When applicable, an application will contain a `start` and `end` folder.
 
 ## What is Framework?
 
@@ -15,7 +15,7 @@ Getting started with Writer Framework is easy. It works on Linux, Mac and Window
 pip install writer
 ```
 
-We recommend using virtual environment.
+We recommend using a virtual environment.
 
 ## Documentation
 
