@@ -4,7 +4,7 @@ import writer.ai
 from  prompts import get_release_notes_summary_prompt, get_release_notes_desc_prompt, get_category_prompt
 from html_template import format_output
 
-#Functions to call the Completions end point for category, summary, and description. The prompts used are imported from the prompts file
+# Functions to call the Completions end point for category, summary, and description. The prompts used are imported from the prompts file
 def _get_category(desc, label):
     prompt = get_category_prompt(desc, label)
     label = writer.ai.complete(prompt)
@@ -26,16 +26,16 @@ def onchangefile_handler(state, payload):
 
     # Store file name and path in case we need to use it later
     name = uploaded_file.get("name")
-    state["File"]["Name"] = name
+    state["file"]["name"] = name
     state["step1"]["processing-message"] = f'+File {name} uploaded successfully.'
-    state["File"]["file_path"] = f"data/{name}"
+    state["file"]["file_path"] = f"data/{name}"
     file_data = uploaded_file.get("data")
     # Save the file to the data folder instead of reading it in memory
     with open(f"data/{name}", "wb") as file_handle:
         file_handle.write(file_data)
         
     # Save raw csv file and mark the upload step as complete
-    data = pd.read_csv(state["File"]["file_path"])
+    data = pd.read_csv(state["file"]["file_path"])
     df = pd.DataFrame(data)
     state["step1"]["raw_csv"] = df
     state["step1"]["generate-button-state"] = "no"
@@ -116,7 +116,7 @@ initial_df = pd.DataFrame(placeholder_data)
 
 # Function to read in the raw CSV file and return a DataFrame
 def _raw_csv_to_df(state):
-    data = pd.read_csv(state["File"]["file_path"])
+    data = pd.read_csv(state["file"]["file_path"])
     df = pd.DataFrame(data)
     return df
 
@@ -126,8 +126,8 @@ initial_state = wf.init_state({
         "title": "Release Notes Generator"
     },
     "logo_image_path" : 'static/Writer_Logo_black.svg',
-    "File": {
-        "Name" : "",
+    "file": {
+        "name" : "",
         "file_path" : "" 
     },
     "metrics":{
