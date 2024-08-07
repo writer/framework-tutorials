@@ -1,7 +1,7 @@
 # Writer Framework tutorials
 This is a repo for Writer Frameowrk tutorial and sample applications. When applicable, an application will contain a `start` and `end` folder.
 
-## What is Framework?
+## What is Writer Framework?
 
 Writer Framework is an open-source framework for creating AI applications. Build user interfaces using a visual editor; write the backend code in Python.
 

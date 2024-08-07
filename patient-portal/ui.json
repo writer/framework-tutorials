@@ -1,0 +1,232 @@
+{
+    "metadata": {
+        "writer_version": "0.6.2rc2"
+    },
+    "components": {
+        "root": {
+            "id": "root",
+            "type": "root",
+            "content": {
+                "appName": "Patient Portal"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "handlers": {},
+            "visible": true
+        },
+        "c0f99a9e-5004-4e75-a6c6-36f17490b134": {
+            "id": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "type": "page",
+            "content": {
+                "pageMode": "compact"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "root",
+            "handlers": {},
+            "visible": true
+        },
+        "bebc5fe9-63a7-46a7-b0fa-62303555cfaf": {
+            "id": "bebc5fe9-63a7-46a7-b0fa-62303555cfaf",
+            "type": "header",
+            "content": {
+                "text": "@{my_app.title}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": true
+        },
+        "ejpasds0o8qyjs1n": {
+            "id": "ejpasds0o8qyjs1n",
+            "type": "section",
+            "content": {
+                "title": ""
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": true
+        },
+        "gb94mafcc1v9x389": {
+            "id": "gb94mafcc1v9x389",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "ejpasds0o8qyjs1n",
+            "handlers": {},
+            "visible": true
+        },
+        "8f2vzhzcr9xqic82": {
+            "id": "8f2vzhzcr9xqic82",
+            "type": "column",
+            "content": {
+                "title": "Chat with patient",
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "gb94mafcc1v9x389",
+            "handlers": {},
+            "visible": true
+        },
+        "j8ixk1ekgdeghl2v": {
+            "id": "j8ixk1ekgdeghl2v",
+            "type": "column",
+            "content": {
+                "title": "",
+                "width": "1"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "gb94mafcc1v9x389",
+            "handlers": {},
+            "visible": true
+        },
+        "tsn4brbxqw9l4udq": {
+            "id": "tsn4brbxqw9l4udq",
+            "type": "chatbot",
+            "content": {
+                "conversation": "@{conversation}",
+                "assistantInitials": "PT",
+                "userInitials": "DR",
+                "placeholder": "Tell me about your symptoms."
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "8f2vzhzcr9xqic82",
+            "handlers": {
+                "wf-chatbot-message": "handle_simple_message"
+            },
+            "visible": true
+        },
+        "4du08s7f0n3lg3ju": {
+            "id": "4du08s7f0n3lg3ju",
+            "type": "button",
+            "content": {
+                "text": "Generate",
+                "icon": "laps"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "j8ixk1ekgdeghl2v",
+            "handlers": {
+                "wf-click": "handle_generate_button"
+            },
+            "visible": true
+        },
+        "x9p1pi2zqsillybk": {
+            "id": "x9p1pi2zqsillybk",
+            "type": "text",
+            "content": {
+                "text": "@{notes}",
+                "useMarkdown": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "93qmz8sfkyppd214",
+            "handlers": {},
+            "visible": true
+        },
+        "vhcq9turtfc5qriz": {
+            "id": "vhcq9turtfc5qriz",
+            "type": "section",
+            "content": {
+                "title": "ICD-10 codes"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "j8ixk1ekgdeghl2v",
+            "handlers": {},
+            "visible": true
+        },
+        "5jq5yhnumb81rd8m": {
+            "id": "5jq5yhnumb81rd8m",
+            "type": "text",
+            "content": {
+                "text": "@{icd_codes}",
+                "useMarkdown": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "vhcq9turtfc5qriz",
+            "handlers": {},
+            "visible": true
+        },
+        "uc6n40eaocif96n8": {
+            "id": "uc6n40eaocif96n8",
+            "type": "message",
+            "content": {
+                "message": "@{message}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": "message"
+        },
+        "8g9zaru7oketgyrb": {
+            "id": "8g9zaru7oketgyrb",
+            "type": "heading",
+            "content": {
+                "text": "Patient interaction notes",
+                "headingType": "h2"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "tsy2i418ggta821c",
+            "handlers": {},
+            "visible": true
+        },
+        "tsy2i418ggta821c": {
+            "id": "tsy2i418ggta821c",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "j8ixk1ekgdeghl2v",
+            "handlers": {},
+            "visible": true
+        },
+        "93qmz8sfkyppd214": {
+            "id": "93qmz8sfkyppd214",
+            "type": "section",
+            "content": {
+                "title": ""
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "j8ixk1ekgdeghl2v",
+            "handlers": {},
+            "visible": true
+        },
+        "uz8k1j3cvyxid6b6": {
+            "id": "uz8k1j3cvyxid6b6",
+            "type": "text",
+            "content": {
+                "text": "*Replace the simulated chat history between a doctor and patient below with your own embedded chat.*",
+                "useMarkdown": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "7kstbinswtzpbl8d",
+            "handlers": {},
+            "visible": true
+        },
+        "7kstbinswtzpbl8d": {
+            "id": "7kstbinswtzpbl8d",
+            "type": "section",
+            "parentId": "8f2vzhzcr9xqic82",
+            "content": {
+                "title": "",
+                "containerBackgroundColor": "#fff5c2"
+            },
+            "handlers": {},
+            "position": 0,
+            "visible": true
+        }
+    }
+}
