@@ -1,0 +1,61 @@
+.category{
+	font-size: larger;
+	padding-bottom: 1em;
+	padding-top: 1em;
+	font-weight: bold;
+}
+
+.summary{
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-left: 1em;
+}
+
+.description{
+	margin-left: 3em;
+	color:gray
+}
+
+.styled-table {
+	width: 70%;
+	max-width: 100%;
+	margin: 20px auto;
+	border-collapse: collapse;
+	font-family: 'Arial', sans-serif;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling for table headers */
+.styled-table thead th {
+	background-color: #009879;
+	color: #ffffff;
+	padding: 12px 15px;
+	text-align: left;
+}
+
+/* Styling for table cells */
+.styled-table tbody td {
+	border: 1px solid #dddddd;
+	padding: 12px 15px;
+	color: #333333;
+}
+
+/* Alternate row styling for better readability */
+.styled-table tbody tr:nth-child(even) {
+	background-color: #f3f3f3;
+}
+
+/* Hover effect for rows */
+.styled-table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+/* Styling for the scrolling container */
+.scroll-container {
+	overflow-y: auto;
+	height: 300px; /* Adjust height as needed */
+}
+
+.headerCell{
+	white-space: nowrap !important;
+}
