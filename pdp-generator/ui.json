@@ -1,13 +1,13 @@
 {
     "metadata": {
-        "writer_version": "0.6.2rc2"
+        "writer_version": "0.6.2rc3"
     },
     "components": {
         "root": {
             "id": "root",
             "type": "root",
             "content": {
-                "appName": "My App"
+                "appName": "PDP Generator"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -32,8 +32,7 @@
             "id": "bebc5fe9-63a7-46a7-b0fa-62303555cfaf",
             "type": "header",
             "content": {
-                "text": "Product Description Page Generator",
-                "primaryTextColor": "#000E57"
+                "text": "@{my_app.title}"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -80,7 +79,7 @@
             "id": "2z47dyxxz19kimjl",
             "type": "fileinput",
             "content": {
-                "label": "Please Upload your Excel File",
+                "label": "Please upload your Excel file",
                 "allowMultipleFiles": "no"
             },
             "isCodeManaged": false,

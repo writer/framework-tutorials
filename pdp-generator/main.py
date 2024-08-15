@@ -87,7 +87,7 @@ def handle_generate_button_click(state):
     if state["step2"]["product-descriptions"] is None:
         state["step1"]["generate-button-state"] = "yes"
 
-        state["processing-message"] = "%Hang tight, we're generating your Product Descriptions!"
+        state["processing-message"] = "%Hang tight, we're generating your product descriptions..."
 
         formatted_product_descriptions = ""
         df = state["step1"]["cleaned_excel"]
@@ -104,7 +104,7 @@ def handle_generate_button_click(state):
                 desc=row["Long Description"]
             )
 
-            state["processing-message"] = f"%Processing {index + 1} of {df.shape[0]} Product Descriptions"
+            state["processing-message"] = f"%Processing {index + 1} of {df.shape[0]} product descriptions..."
 
             formatted_product_descriptions += _format_output(
                 name=df.at[index, "Name"],
@@ -195,7 +195,7 @@ def handle_translate_button_click(state):
 
 def _update_translation_status(state, language):
     if state["step3"][f"{language}-translation"].equals(initial_df):
-        state["processing-message"] = f"%Hang tight, we're translating your file to {language}"
+        state["processing-message"] = f"%Hang tight, we're translating your file to {language.capitalize()}..."
         state["step3"][f"{language}-translation"] = _translate_to(state, language)
 
 
@@ -249,7 +249,7 @@ initial_df = pd.DataFrame(placeholder_data)
 
 initial_state = wf.init_state(
     {
-        "my_app": {"title": "MY APP"},
+        "my_app": {"title": "PRODUCT DESCRIPTION PAGE GENERATOR"},
         "image-path": "static/writer_logo.png",
         "file": {"name": "", "file_path": ""},
         "metrics": {"products": 0},
