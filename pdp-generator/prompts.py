@@ -113,8 +113,8 @@ including line spaces and bullet points. Do not retain the Bold formatting.
 3. DO NOT make up any information in the output. You will be heavily penalized for including details in your output
 that are not present in the original text.
 4. DO not output instructions, only give the translated output of the source text from the input below.
-5. For short pieces of text such as Names of devices, do not include any additional text aside from the Name
-of the device. You will get a $200 tip if you follow this rule.
+5. For short pieces of text such as Names of shoes, do not include any additional text aside from the Name
+of the shoe. You will get a $200 tip if you follow this rule.
 
 <inputs>
 source: {text}
