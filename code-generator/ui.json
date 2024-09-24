@@ -1,0 +1,65 @@
+{
+    "metadata": {
+        "writer_version": "0.7.4"
+    },
+    "components": {
+        "root": {
+            "id": "root",
+            "type": "root",
+            "content": {
+                "appName": "Code generator"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "handlers": {}
+        },
+        "c0f99a9e-5004-4e75-a6c6-36f17490b134": {
+            "id": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "type": "page",
+            "content": {
+                "pageMode": "compact"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "root",
+            "handlers": {}
+        },
+        "bebc5fe9-63a7-46a7-b0fa-62303555cfaf": {
+            "id": "bebc5fe9-63a7-46a7-b0fa-62303555cfaf",
+            "type": "header",
+            "content": {
+                "text": "Code generator"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {}
+        },
+        "wr3d3ksx98oph32v": {
+            "id": "wr3d3ksx98oph32v",
+            "type": "custom_codeviewer",
+            "content": {
+                "code": "@{app_code}"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {}
+        },
+        "4ymyn6cupdlc2gp3": {
+            "id": "4ymyn6cupdlc2gp3",
+            "type": "textinput",
+            "content": {
+                "label": "",
+                "placeholder": "Input app ideas...",
+                "cssClasses": "ideas-input"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {
+                "wf-change-finish": "generate_app_code"
+            }
+        }
+    }
+}
