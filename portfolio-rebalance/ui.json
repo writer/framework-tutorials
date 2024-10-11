@@ -1,0 +1,255 @@
+{
+    "metadata": {
+        "writer_version": "0.7.5"
+    },
+    "components": {
+        "root": {
+            "id": "root",
+            "type": "root",
+            "content": {
+                "appName": "@{app.title}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "handlers": {}
+        },
+        "c0f99a9e-5004-4e75-a6c6-36f17490b134": {
+            "id": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "type": "page",
+            "content": {
+                "pageMode": "compact"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "root",
+            "handlers": {}
+        },
+        "4kukoixkdb66ixah": {
+            "id": "4kukoixkdb66ixah",
+            "type": "header",
+            "content": {
+                "text": "@{app.title}"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "ucjcbwq77vc9v7wy": {
+            "id": "ucjcbwq77vc9v7wy",
+            "type": "columns",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "h2ohmrz2sukc7957": {
+            "id": "h2ohmrz2sukc7957",
+            "type": "column",
+            "content": {
+                "width": "435"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "ucjcbwq77vc9v7wy",
+            "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "l0dulm2peg4f6tzt": {
+            "id": "l0dulm2peg4f6tzt",
+            "type": "section",
+            "content": {
+                "title": "Analyze a client's portfolio and provide recommendations to align with financial goals.",
+                "accentColor": "#eae5ff",
+                "containerBackgroundColor": "#f0f2ff"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "h2ohmrz2sukc7957",
+            "handlers": {}
+        },
+        "5vqct8im5e9k8b39": {
+            "id": "5vqct8im5e9k8b39",
+            "type": "fileinput",
+            "content": {
+                "label": "Please upload your file:",
+                "cssClasses": ""
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "h2ohmrz2sukc7957",
+            "handlers": {
+                "wf-file-change": "handle_file_on_change"
+            }
+        },
+        "z4ls2rlvavjwibsf": {
+            "id": "z4ls2rlvavjwibsf",
+            "type": "message",
+            "content": {
+                "message": "+@{file.name}",
+                "loadingColor": "#CCD1FF"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "h2ohmrz2sukc7957",
+            "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "23xckvueigh8ptun": {
+            "id": "23xckvueigh8ptun",
+            "type": "image",
+            "content": {
+                "src": "@{image-path}",
+                "caption": "",
+                "maxWidth": "200"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "bebc5fe9-63a7-46a7-b0fa-62303555cfaf",
+            "handlers": {},
+            "visible": {
+                "expression": true,
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "qc3bz866zvws7qjv": {
+            "id": "qc3bz866zvws7qjv",
+            "type": "image",
+            "content": {
+                "src": "@{image-path}",
+                "caption": "",
+                "maxWidth": "200"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "4kukoixkdb66ixah",
+            "handlers": {}
+        },
+        "atfrj4hq67mr21my": {
+            "id": "atfrj4hq67mr21my",
+            "type": "column",
+            "content": {
+                "width": "565"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "ucjcbwq77vc9v7wy",
+            "handlers": {}
+        },
+        "x367sdg4av53sekq": {
+            "id": "x367sdg4av53sekq",
+            "type": "text",
+            "content": {
+                "text": "@{analysis-result}",
+                "useMarkdown": "yes"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "atfrj4hq67mr21my",
+            "handlers": {}
+        },
+        "q2rvba1xbblntb4j": {
+            "id": "q2rvba1xbblntb4j",
+            "type": "separator",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {}
+        },
+        "yx2okkdujwi262y6": {
+            "id": "yx2okkdujwi262y6",
+            "type": "button",
+            "content": {
+                "text": "Clear results",
+                "icon": "delete"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "leqniot8fxcu9dlx",
+            "handlers": {
+                "wf-click": "clear_results"
+            },
+            "visible": {
+                "expression": "custom",
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "vk4yo7hgej0war9p": {
+            "id": "vk4yo7hgej0war9p",
+            "type": "message",
+            "content": {
+                "message": "@{processing-message}"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "h2ohmrz2sukc7957",
+            "handlers": {}
+        },
+        "pk2baxkgkxrck4sn": {
+            "id": "pk2baxkgkxrck4sn",
+            "type": "header",
+            "content": {
+                "text": "Portfolio recommendations"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "atfrj4hq67mr21my",
+            "handlers": {}
+        },
+        "rw6v6b1iovkth6bg": {
+            "id": "rw6v6b1iovkth6bg",
+            "type": "button",
+            "content": {
+                "text": "Download analysis result file",
+                "icon": "download"
+            },
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "leqniot8fxcu9dlx",
+            "handlers": {
+                "wf-click": "handle_file_download"
+            },
+            "visible": {
+                "expression": "custom",
+                "binding": "",
+                "reversed": false
+            }
+        },
+        "leqniot8fxcu9dlx": {
+            "id": "leqniot8fxcu9dlx",
+            "type": "horizontalstack",
+            "content": {},
+            "isCodeManaged": false,
+            "position": 4,
+            "parentId": "h2ohmrz2sukc7957",
+            "handlers": {},
+            "visible": {
+                "expression": "custom",
+                "binding": "visual_block_visible",
+                "reversed": false
+            }
+        }
+    }
+}

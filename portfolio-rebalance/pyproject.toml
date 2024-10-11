@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "portfolio-rebalance"
+version = "1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+writer = "0.7.5"
+openpyxl = "3.1.5"
+pandas = "2.2.3"
+pypdf2 = "3.0.1"
+python-dotenv = "1.0.1"
+python-docx = "1.1.2"
+asyncio = "^3.4.3"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.1"
+black = "^24.8.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
