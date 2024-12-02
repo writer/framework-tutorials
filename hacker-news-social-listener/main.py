@@ -245,11 +245,10 @@ def run_report(state: WriterState) -> None:
         state["message_report"] = "%Creating report"
         state["message_report_vis"] = True
 
-        graph = retrieve_graph(GRAPH_ID)
-
-        report_convo = Conversation(report_prompt)
-        report_convo += {"role": "user", "content": report_prompt}
-        response = report_convo.stream_complete(tools=graph)
+        prompt = report_prompt(state["posts"], state["comments"])
+        report_convo = Conversation()
+        report_convo += {"role": "user", "content": prompt}
+        response = report_convo.stream_complete()
 
         state["prepared_report"] = ""
 
@@ -305,8 +304,7 @@ initial_state = wf.init_state(
     {
         "conversation": Conversation(
             [
-                {"role": "user", "content": "Hello"},
-                {"role": "assistant", "content": "Hi, how can I help?"},
+                {"role": "assistant", "content": "Ask me anything about the scraped Hacker News data."},
             ],
         ),
         "response": None,

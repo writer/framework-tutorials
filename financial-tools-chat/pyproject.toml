@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-writer = "0.8.1"
+writer = "0.8.2"
 openai = "1.51.2"
 pre-commit = "^3.8.0"
 flake8 = "7.1.1"

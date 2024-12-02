@@ -80,8 +80,8 @@ def _update_graphic(state, property_name, symbol_name):
 
 def _get_chart_placeholder():
     df = px.data.stocks()
-    df.columns.values[1] = "WRTR"
-    fig = px.line(df, x="date", y="WRTR")
+    df.columns.values[1] = "TEST"
+    fig = px.line(df, x="date", y="TEST")
 
     fig.update_layout(
         height=400,
@@ -103,7 +103,7 @@ def clear_visualization(state):
     tab_names = ["stock", "income", "earnings"]
 
     for tab_name in tab_names:
-        state[tab_name + "_analysis"] = "Expertly written analysis"
+        state[tab_name + "_analysis"] = "Analysis will appear here."
         state[tab_name + "_chart"] = _get_chart_placeholder()
 
     state["visual_block_visible"] = False
@@ -121,16 +121,15 @@ initial_state = writer.init_state(
     {
         "conversation": Conversation(
             [
-                {"role": "user", "content": "Hello!"},
-                {"role": "assistant", "content": "Hi, how can I help you?"},
+                {"role": "assistant", "content": "Hi there. I can analyze stock price data, income statements, and earnings reports. How can I help?"},
             ],
         ),
         "visual_block_visible": False,
-        "stock_analysis": "Expertly written analysis",
+        "stock_analysis": "Analysis will appear here.",
         "stock_chart": _get_chart_placeholder(),
-        "income_analysis": "Expertly written analysis",
+        "income_analysis": "Analysis will appear here.",
         "income_chart": _get_chart_placeholder(),
-        "earnings_analysis": "Expertly written analysis",
+        "earnings_analysis": "Analysis will appear here.",
     }
 )
 

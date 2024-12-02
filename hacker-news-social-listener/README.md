@@ -1,8 +1,9 @@
 # AI listener: Hacker News listening app
-This application is built using the Writer Framework and is designed to scrape the top posts and comments from Hacker News. It processes the data, uploads it to a Writer Graph for further analysis, and generates AI-powered insights based on the content of the posts.
+This application is built using the Writer Framework and is designed to scrape the top posts and comments from Hacker News. It processes the data, uploads it to a Writer Knowledge Graph for further analysis, and generates AI-powered insights based on the content of the posts.
+
 ## Usage
 
-1.Select the number of items you wish to process.
+1. Select the number of items you wish to process.
 2. The application will generate raw data with analysis of posts and comments.
 3. Ask specific questions using the Knowledge Graph chat.
 4. Generate a detailed report from the processed data using the Prepared Report feature.
