@@ -3,7 +3,7 @@ import writer.ai
 import pandas as pd
 from prompts import stock_prompts, income_prompts, earnings_prompt
 from stock_data import download_data, download_sp500, stock_news, _one_day_data, income_statement, earnings_calls
-from charts import update_scatter_chart
+from charts import update_scatter_chart, handle_click
 from dotenv import load_dotenv
 import os
 
@@ -34,12 +34,12 @@ def _refresh_window(state):
 # Summarize earnings call using Palmyra-Fin model
 def summarize_earnings(state):
     _refresh_window(state)  
-    state["message"] = f"% {state["symbol"]} earnings call will be summarized here"
+    state["message"] = f"% {state['symbol']} earnings call will be summarized here"
     
     earnings_transcript = state["earnings_transcript"]
     prompt = earnings_prompt.format(earnings_transcript=earnings_transcript)
     submission = writer.ai.complete(prompt, config={"model": "palmyra-fin-32k", "temperature": 0.7, "max_tokens": 8192})
-    state["message"] = f"+ {state["symbol"]} earnings call summary"
+    state["message"] = f"+ {state['symbol']} earnings call summary"
     state["analysis"] = submission.strip()
     state["show_analysis_text"]["visible"] = True
     
@@ -53,10 +53,10 @@ def prompt_parameters_lang(state,payload):
     
 def generate_stock_analysis(state):
     _refresh_window(state)  
-    if(state["prompt_parameters_lang"] == ""):
+    if state["prompt_parameters_lang"] == "":
         state["prompt_parameters_lang"] == "English"
 
-    state["message"] = f"% {state["symbol"]} trends will be analyzed here in {state['prompt_parameters_lang']}"
+    state["message"] = f"% {state['symbol']} trends will be analyzed here in {state['prompt_parameters_lang']}"
     stock_name = state["symbol"]
     stock_data = state["main_df"][:365]
         
@@ -68,7 +68,7 @@ def generate_stock_analysis(state):
     prompt = stock_prompts.format(language=language, stock_name=stock_name,words=integer_value,stock_data=stock_data)
     submission = writer.ai.complete(prompt, config={"model": "palmyra-fin-32k", "temperature": 0.7, "max_tokens": 8192})
     state["analysis"] = submission.strip()
-    state["message"] = f"+ {state["symbol"]} trends analyzed"
+    state["message"] = f"+ {state['symbol']} trends analyzed"
     state["show_analysis_text"]["visible"] = True
     state["show_analysis_text"]["language"] = True
         
@@ -77,7 +77,7 @@ def generate_stock_analysis(state):
 
 def generate_income_analysis(state):
     _refresh_window(state)
-    state["message"] = f"% {state["symbol"]} income statement will be visualized here"
+    state["message"] = f"% {state['symbol']} income statement will be visualized here"
     stock_name = state["symbol"]
     stock_data = state["main_df"][:365]
     income_statement_data = state["income_statement_df"][:365]
@@ -88,7 +88,7 @@ def generate_income_analysis(state):
     )
     submission = writer.ai.complete(prompt, config={"model": "palmyra-fin-32k", "temperature": 0.7, "max_tokens": 8192})
     state["analysis"] = submission.strip()
-    state["message"] = f"+ {state["symbol"]} income statement visualized"
+    state["message"] = f"+ {state['symbol']} income statement visualized"
     state["show_income_metrics"]["visible"] = True
     state["show_analysis_text"]["visible"] = True
     state["show_bar_graph"]["visible"] = True
@@ -107,7 +107,6 @@ initial_state = wf.init_state(
         "last_24_hours_open": "168.76",
         "last_24_hours_high": "169.72",
         "last_24_hours_low": "167.50",
-        "message": None,
         "main_df": _get_main_df("daily_IBM.csv"),
         "main_df_subset": _get_main_df("daily_IBM.csv"),
         "symbol": "AAPL",

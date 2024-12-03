@@ -72,11 +72,11 @@ def update_scatter_chart(state):
     )
 
     # Set axis titles
-    fig.update_yaxes(title_text=f"{state["symbol"]} Stock Price", secondary_y=False)
+    fig.update_yaxes(title_text=f"{state['symbol']} Stock Price", secondary_y=False)
     fig.update_yaxes(title_text="S&P 500", secondary_y=True)
 
     # Update layout
-    fig.update_layout(height=550, title_text=f"{state["symbol"]} Stock vs the S&P 500", title_x = 0.5, title_y = 0.9, legend=dict(
+    fig.update_layout(height=550, title_text=f"{state['symbol']} Stock vs the S&P 500", title_x = 0.5, title_y = 0.9, legend=dict(
             orientation='h',
             yanchor='top',
             y=-0.2,  # Adjust this value as needed

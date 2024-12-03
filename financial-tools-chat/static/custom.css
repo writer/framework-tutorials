@@ -1,0 +1,8 @@
+.visualization{
+    height: 80vh !important;
+    overflow-y: auto !important;
+}
+
+.column-container{
+    width: 71vw !important;
+}
