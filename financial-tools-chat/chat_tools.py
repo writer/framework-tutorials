@@ -25,7 +25,7 @@ def _get_stock_analysis(symbol: str) -> str:
 def _get_stock_data(symbol: str) -> str:
     df = yf.download(symbol, period="5y", interval="5d")
     df = df.reset_index()
-    df = df.sort_values(by="Date", ascending=False)
+    df = df.sort_values(by="Date", ascending=True)
     df = df.round({"Open": 2, "High": 2, "Low": 2, "Close": 2, "Adj Close": 2})
     df["Date"] = pd.to_datetime(df["Date"])
     return df.to_csv(index=False)
