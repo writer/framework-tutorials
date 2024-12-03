@@ -24,7 +24,7 @@ and future prospects. Consider factors such as growth potential, risk level, and
 If there is insufficient information to draw a conclusion, state this limitation in your response.
 
 # USER REQUEST SAMPLE #
-Here is the user request sample: "Tell me about tesla stock"
+Here is the user request sample: "Tell me about Tesla stock"
 
 # RESPONSE FORMAT #
 Highlight headers, topics, main metrics and ideas. Use .md markup to style your text.

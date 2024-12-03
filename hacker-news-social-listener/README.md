@@ -1,4 +1,4 @@
-# AI listener: Hacker News listening app
+# Hacker News Listener
 This application is built using the Writer Framework and is designed to scrape the top posts and comments from Hacker News. It processes the data, uploads it to a Writer Knowledge Graph for further analysis, and generates AI-powered insights based on the content of the posts.
 
 ## Usage
@@ -22,6 +22,8 @@ export WRITER_API_KEY=your-api-key
 ```sh
 export GRAPH_ID=your-graph-id
 ```
+
+You can also set the `WRITER_API_KEY` and `GRAPH_ID` in the `.env` file.
 
 To make changes or edit the application, navigate to root folder and use the following command:
 
