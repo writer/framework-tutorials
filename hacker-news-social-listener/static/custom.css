@@ -1,0 +1,17 @@
+.file{
+    height: 60vh !important;
+}
+
+.file-text{
+    height: 51vh !important;
+    overflow-y: auto !important;
+}
+
+.files-list{
+    height: 84vh !important;
+    overflow-y: auto !important;
+}
+
+.CoreSection__title h3{
+    font-size: 1.05rem !important;
+}
