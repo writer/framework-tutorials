@@ -37,9 +37,9 @@ def main(state: WriterState) -> None:
 
     posts, comments = _scrape_hackernews(state)
     state["message_setup"] = "%Data was scraped"
-    state["posts"] = posts[["title", "created_utc", "score", "num_comments", "url"]] if posts.size > 0 else pd.DataFrame()
+    state["posts"] = posts[["title", "created_utc", "score", "num_comments", "url"]] if posts is not None else pd.DataFrame()
     if state["allow_comments"]:
-        state["comments"] = comments[["body", "author", "created_utc"]] if comments.size > 0 else pd.DataFrame()
+        state["comments"] = comments[["body", "author", "created_utc"]] if comments is not None else pd.DataFrame()
     state["message_setup"] = "%Scraped data, now saving to csv"
 
     _save_results_to_csv(state)

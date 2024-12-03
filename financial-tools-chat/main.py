@@ -1,7 +1,6 @@
 import json
 import os
 
-import httpx
 import plotly.express as px
 import writer
 from chat_tools import get_income_chart, get_stock_chart, tools
@@ -27,7 +26,7 @@ def message_handler(payload, state):
             _visualize_response(state, tool_call)
 
         state.call_frontend_function("scripts", "enableDisableTextarea", ["false"])
-    except (KeyError, ValueError, httpx.RemoteProtocolError) as e:
+    except Exception as e:
         state["conversation"] += {
             "role": "assistant",
             "content": "Sorry, we faced unexpected error. Please try again!",
