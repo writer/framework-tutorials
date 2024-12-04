@@ -312,7 +312,7 @@ initial_state = wf.init_state(
         "graph_name": "",
         "uploaded_file": None,
         "graph_id": None,
-        "prepared_report": "# **Data summary report**",
+        "prepared_report": "# **Trend report**",
         "contributing_sources_button_text": "View contributing sources ◂",
         "message_setup": "",
         "message_report": "",
