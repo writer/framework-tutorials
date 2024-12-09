@@ -33,28 +33,45 @@ wf.Config.feature_flags = ["dataframeEditor"]
 def main(state: WriterState) -> None:
     _delete_files_from_graph(GRAPH_ID)
     state["message_setup"] = "%Scraping data"
-    state["message_setup_vis"] = True
 
     posts, comments = _scrape_hackernews(state)
     state["message_setup"] = "%Data was scraped"
-    state["posts"] = posts[["title", "created_utc", "score", "num_comments", "url"]] if posts is not None else pd.DataFrame()
+    posts_columns = ["title", "created_utc", "score", "num_comments", "url"]
+    state["posts"] = (
+        posts[posts_columns]
+        if _verify_df(posts, posts_columns)
+        else pd.DataFrame(data={"Info": ["Invalid data was scrapped"]})
+    )
     if state["allow_comments"]:
-        state["comments"] = comments[["body", "author", "created_utc"]] if comments is not None else pd.DataFrame()
+        comments_columns = ["body", "author", "created_utc"]
+        state["comments"] = (
+            comments[comments_columns]
+            if _verify_df(comments, comments_columns)
+            else pd.DataFrame(data={"Info": ["Invalid data was scrapped"]})
+        )
     state["message_setup"] = "%Scraped data, now saving to csv"
 
     _save_results_to_csv(state)
     state["message_setup"] = "%Saved data, now uploading to KG"
 
     files_path = "static/hackernews_posts.csv"
-    _upload_file_and_add_to_graph(files_path, GRAPH_ID)
+    _upload_file_and_add_to_graph(state, files_path, GRAPH_ID)
     state["message_setup"] = "%Uploaded file and added to graph"
 
     if state["allow_comments"]:
         file_path = "static/hackernews_comments.csv"
-        _upload_file_and_add_to_graph(file_path, GRAPH_ID)
+        _upload_file_and_add_to_graph(state, file_path, GRAPH_ID)
 
-    state["message_setup"] = "+Scrapping is completed!"
-    state["message_setup_vis"] = False
+    state["message_setup"] = ""
+
+
+def _verify_df(df: pd.DataFrame, columns: List) -> bool:
+    if df is None:
+        return False
+    elif not all(column in df.columns for column in columns):
+        return False
+    else:
+        return True
 
 
 def _delete_files_from_graph(graph_id: str) -> None:
@@ -82,8 +99,8 @@ def _get_file_from_graph(file_id: str) -> Optional[File]:
 
 def _scrape_hackernews(state: WriterState) -> tuple[Any, Any]:
     stories_ids = _get_stories_ids(state)
-    posts, comments_ids = _get_posts(stories_ids)
-    comments = _get_comments(comments_ids)
+    posts, comments_ids = _get_posts(state, stories_ids)
+    comments = _get_comments(state, comments_ids)
 
     if len(posts) > 0:
         state["posts"] = pd.DataFrame(posts).sort_values(
@@ -108,10 +125,11 @@ def _get_stories_ids(state: WriterState) -> List[str]:
         return response.json()[: int(state["fetch_limit"])]
     except Exception as e:
         print(f"Failed to fetch story ids from Hacker News: {str(e)}")
+        state["message_setup"] = ""
         return []
 
 
-def _get_posts(stories_ids: List[str]) -> (List[dict], List[int]):
+def _get_posts(state: WriterState, stories_ids: List[str]) -> (List, List):
     try:
         stories_urls = [
             f"{HACKERNEWS_API_URL}/item/{story_id}.json" for story_id in stories_ids
@@ -143,10 +161,11 @@ def _get_posts(stories_ids: List[str]) -> (List[dict], List[int]):
         return posts_data, comments_ids
     except Exception as e:
         print(f"Failed to fetch stories from Hacker News: {str(e)}")
-        return ([], [])
+        state["message_setup"] = ""
+        return [], []
 
 
-def _get_comments(comments_ids: List[str]) -> List[dict]:
+def _get_comments(state: WriterState, comments_ids: List[str]) -> List[dict]:
     try:
         comments_urls = [
             f"{HACKERNEWS_API_URL}/item/{comment_id}.json"
@@ -172,6 +191,7 @@ def _get_comments(comments_ids: List[str]) -> List[dict]:
         return comments_data
     except Exception as e:
         print(f"Failed to fetch comments from Hacker News: {str(e)}")
+        state["message_setup"] = ""
         return []
 
 
@@ -194,7 +214,9 @@ def _save_results_to_csv(state: WriterState) -> None:
         state["comments"].to_csv("static/hackernews_comments.csv", index=False)
 
 
-def _upload_file_and_add_to_graph(file_path: str, graph_id: str) -> dict:
+def _upload_file_and_add_to_graph(
+    state: WriterState, file_path: str, graph_id: str
+) -> dict:
     try:
         file_id = _upload_file(file_path)
         _add_file_to_graph(graph_id, file_id)
@@ -202,6 +224,7 @@ def _upload_file_and_add_to_graph(file_path: str, graph_id: str) -> dict:
         return {"file_id": file_id, "graph_id": graph_id}
     except Exception as e:
         print(f"An error while file uploading occurred: {str(e)}")
+        state["message_setup"] = ""
         return {}
 
 
@@ -220,22 +243,24 @@ def _add_file_to_graph(graph_id: str, file_id: str) -> None:
 
 def _handle_contributing_sources(state: WriterState, graph_data: dict) -> None:
     sources = graph_data.get("sources")
+    contributing_sources = {}
     if sources:
-        with wf.init_ui() as ui:
-            with ui.refresh_with("contributed_sources"):
-                for index, source in enumerate(sources):
-                    source_file = _get_file_from_graph(source["file_id"])
-                    source_snippet = source["snippet"]
-                    ui.Section(
-                        content={
-                            "title": "📄 " + source_file.name,
-                            "cssClasses": "file",
-                        },
-                        id=f"source {index}",
-                    )
-                    with ui.find(f"source {index}"):
-                        ui.Text({"text": source_snippet, "cssClasses": "file-text"})
+        for index, source in enumerate(sources):
+            source_file = _get_file_from_graph(source["file_id"])
+            source_snippet = source["snippet"]
 
+            contributing_sources.update(
+                {
+                    str(index): {
+                        "name": f"📄 {source_file.name}",
+                        "file_css": "file",
+                        "content": source_snippet,
+                        "content_css": "file-text",
+                    }
+                }
+            )
+
+        state["contributing_sources"] = contributing_sources
         state["contributing_sources_vis"] = True
         state["contributing_sources_button_text"] = "View contributing sources ▸"
 
@@ -243,7 +268,6 @@ def _handle_contributing_sources(state: WriterState, graph_data: dict) -> None:
 def run_report(state: WriterState) -> None:
     try:
         state["message_report"] = "%Creating report"
-        state["message_report_vis"] = True
 
         prompt = report_prompt(state["posts"], state["comments"])
         report_convo = Conversation()
@@ -255,10 +279,10 @@ def run_report(state: WriterState) -> None:
         for chunk in response:
             state["prepared_report"] += chunk["content"]
 
-        state["message_report"] = "+Creation is finished!"
-        state["message_report_vis"] = False
+        state["message_report"] = ""
     except Exception as e:
         state["prepared_report"] = "Something went wrong. Please try again!"
+        state["message_report"] = ""
         raise e
 
 
@@ -304,9 +328,13 @@ initial_state = wf.init_state(
     {
         "conversation": Conversation(
             [
-                {"role": "assistant", "content": "Ask me anything about the scraped Hacker News data."},
+                {
+                    "role": "assistant",
+                    "content": "Ask me anything about the scraped Hacker News data.",
+                },
             ],
         ),
+        "contributing_sources": {},
         "response": None,
         "file_path": "",
         "graph_name": "",
@@ -316,14 +344,10 @@ initial_state = wf.init_state(
         "contributing_sources_button_text": "View contributing sources ◂",
         "message_setup": "",
         "message_report": "",
-        "message_setup_vis": False,
-        "message_report_vis": False,
         "contributing_sources_vis": False,
         "fetch_limit": 100,
         "allow_comments": True,
     }
 )
 
-initial_state.import_frontend_module("scripts", "/static/custom.js")
 initial_state.import_stylesheet("style", "/static/custom.css")
-initial_state.call_frontend_function("scripts", "initSelectedDropdownOption", [])
