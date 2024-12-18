@@ -7,8 +7,15 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10.0"
-writer = {version = "^0.6.0"}
-
+writer = "^0.8.3rc2"
+python-dotenv = "^1.0.1"
+pandas = "^2.2.3"
+plotly = "^5.24.1"
+yfinance = "0.2.42"
+pre-commit = "^4.0.1"
+flake8 = "^7.1.1"
+black = "^24.10.0"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]
