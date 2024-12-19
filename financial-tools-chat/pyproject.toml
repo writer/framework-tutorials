@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "fc-demo-app"
+name = "writer-framework-default"
 version = "0.1.0"
 description = ""
-authors = ["Johannes <tolstoy.work@gmail.com>"]
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
