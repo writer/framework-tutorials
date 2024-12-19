@@ -3,6 +3,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+
 def handle_click(state, context: dict, ui):
     # Resetting the classes for active button
     if state["active_button"]:
@@ -18,11 +19,12 @@ def handle_click(state, context: dict, ui):
     button_text = button.content["text"]
     _handle_time_period(state, button_text)
     button.content["cssClasses"] = "button-click"
-    
+
     button_max = ui.find("e13teponreio9yyz")
     button_max.content["cssClasses"] = ""
-    
+
     ui.component_tree.updated = True
+
 
 def _handle_time_period(state, period):
     state["main_df_subset"] = state["main_df"]
@@ -41,9 +43,10 @@ def _handle_time_period(state, period):
         pass
     update_scatter_chart(state)
 
+
 def update_scatter_chart(state):
     fig = px.line(state["main_df_subset"], x="Date", y="Open", height=400)
-    
+
     df1 = state["main_df_subset"]
     df2 = state["another_df"]
     df2 = df2.head(len(df1))
@@ -61,13 +64,13 @@ def update_scatter_chart(state):
 
     # Add traces for the primary y-axis (Main_DF)
     fig.add_trace(
-        go.Scatter(x=df1["Date"], y=df1["Open"], name=state["symbol"], mode='lines'),
+        go.Scatter(x=df1["Date"], y=df1["Open"], name=state["symbol"], mode="lines"),
         secondary_y=False,
     )
 
     # Add traces for the secondary y-axis (Another_DF)
     fig.add_trace(
-        go.Scatter(x=df2["Date"], y=df2["Open"], name="S&P 500", mode='lines'),
+        go.Scatter(x=df2["Date"], y=df2["Open"], name="S&P 500", mode="lines"),
         secondary_y=True,
     )
 
@@ -76,16 +79,23 @@ def update_scatter_chart(state):
     fig.update_yaxes(title_text="S&P 500", secondary_y=True)
 
     # Update layout
-    fig.update_layout(height=550, title_text=f"{state['symbol']} Stock vs the S&P 500", title_x = 0.5, title_y = 0.9, legend=dict(
-            orientation='h',
-            yanchor='top',
+    fig.update_layout(
+        height=550,
+        title_text=f"{state['symbol']} Stock vs the S&P 500",
+        title_x=0.5,
+        title_y=0.9,
+        legend=dict(
+            orientation="h",
+            yanchor="top",
             y=-0.2,  # Adjust this value as needed
-            xanchor='center',
-            x=0.5
-        ))
+            xanchor="center",
+            x=0.5,
+        ),
+    )
 
     state["scatter_chart"] = fig
-    
+
+
 def update_bar_graph(state):
     fig = px.line(state["main_df_subset"], x="Date", y="Open", height=400)
 
