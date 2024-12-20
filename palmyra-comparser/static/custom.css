@@ -1,0 +1,16 @@
+.model-response {
+    height: 55vh !important;
+    overflow-y: auto !important;
+}
+
+.prompt-input{
+    max-width: 90vw !important;
+}
+
+.prompt-button{
+    width: 100vw !important;
+}
+
+.WdsDropdownInput{
+    width: 100vw !important;
+}
