@@ -39,11 +39,12 @@ async def process_rules(state):
 
     tasks = []
 
+    state["message"] = "Performing analysis..."
+
     # Fetch data for each rule
     for rule in rules:
         if(rule.name in state["suggestion_flags_selected"]):
             formatted_name = rule.name.replace("_", " ")
-            state["message"] = f"Processing {formatted_name}..."
             tasks.append(rule.fetch_data())
 
     await asyncio.gather(*tasks)
