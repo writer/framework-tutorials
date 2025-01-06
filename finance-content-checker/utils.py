@@ -20,13 +20,13 @@ def highlight_string(state,rule):
 
 def convert_string_to_dict_list(input_string):
     try:
-        # Properly format the string to make it a valid JSON array
-        formatted_string = '[' + input_string.replace('}\n    {', '},\n    {') + ']'
+        # # Properly format the string to make it a valid JSON array
+        input_string = input_string.replace("```json", "").replace("```", "")
         # Convert the formatted string into a list of dictionaries
-        data_list = json.loads(formatted_string)
+        data_list = json.loads(input_string)
         return data_list
     except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
+        print(e)
         return []
 
 
