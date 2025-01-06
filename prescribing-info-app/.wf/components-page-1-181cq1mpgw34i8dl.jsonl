@@ -1,0 +1,9 @@
+{"id": "181cq1mpgw34i8dl", "type": "page", "content": {"key": "chat", "pageMode": "compact"}, "handlers": {}, "isCodeManaged": false, "parentId": "root", "position": 1, "visible": {"binding": "", "expression": true, "reversed": false}}
+{"id": "b6cillcjhtpg71tk", "type": "columns", "content": {}, "handlers": {}, "isCodeManaged": false, "parentId": "181cq1mpgw34i8dl", "position": 0}
+{"id": "5dxznhfw18bkp88o", "type": "column", "content": {"width": "1"}, "handlers": {}, "isCodeManaged": false, "parentId": "b6cillcjhtpg71tk", "position": 0}
+{"id": "66m0u100zicdr0j3", "type": "header", "content": {"text": "Medicine app"}, "handlers": {}, "isCodeManaged": false, "parentId": "5dxznhfw18bkp88o", "position": 0, "visible": {"binding": "", "expression": true, "reversed": false}}
+{"id": "ptn01trkgrzmc11v", "type": "column", "content": {"width": "1"}, "handlers": {}, "isCodeManaged": false, "parentId": "b6cillcjhtpg71tk", "position": 1}
+{"id": "y1x6gru1icypiguh", "type": "horizontalstack", "content": {"contentHAlign": "right"}, "isCodeManaged": false, "parentId": "ptn01trkgrzmc11v", "position": 0}
+{"id": "medicine1", "type": "button", "content": {"buttonColor": "#ffffff", "buttonTextColor": "#241f31", "icon": "", "text": "Drug info \ud83d\udc8a"}, "handlers": {"wf-click": "$goToPage_drug-info"}, "isCodeManaged": false, "parentId": "y1x6gru1icypiguh", "position": 0}
+{"id": "chat1", "type": "button", "content": {"buttonColor": "#ffffff", "buttonTextColor": "#241f31", "icon": "", "text": "Chat \ud83d\udcac"}, "handlers": {"wf-click": "$goToPage_chat"}, "isCodeManaged": false, "parentId": "y1x6gru1icypiguh", "position": 1}
+{"id": "t76ns9nd93w1aaac", "type": "chatbot", "content": {"conversation": "@{conversation}", "useMarkdown": "yes"}, "handlers": {"wf-chatbot-message": "user_message"}, "isCodeManaged": false, "parentId": "181cq1mpgw34i8dl", "position": 1}
