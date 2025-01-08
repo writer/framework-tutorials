@@ -6,4 +6,15 @@
 {"id": "y1x6gru1icypiguh", "type": "horizontalstack", "content": {"contentHAlign": "right"}, "isCodeManaged": false, "parentId": "ptn01trkgrzmc11v", "position": 0}
 {"id": "medicine1", "type": "button", "content": {"buttonColor": "#ffffff", "buttonTextColor": "#241f31", "icon": "", "text": "Drug info \ud83d\udc8a"}, "handlers": {"wf-click": "$goToPage_drug-info"}, "isCodeManaged": false, "parentId": "y1x6gru1icypiguh", "position": 0}
 {"id": "chat1", "type": "button", "content": {"buttonColor": "#ffffff", "buttonTextColor": "#241f31", "icon": "", "text": "Chat \ud83d\udcac"}, "handlers": {"wf-click": "$goToPage_chat"}, "isCodeManaged": false, "parentId": "y1x6gru1icypiguh", "position": 1}
-{"id": "t76ns9nd93w1aaac", "type": "chatbot", "content": {"conversation": "@{conversation}", "useMarkdown": "yes"}, "handlers": {"wf-chatbot-message": "user_message"}, "isCodeManaged": false, "parentId": "181cq1mpgw34i8dl", "position": 1}
+{"id": "3yv1o3158qk6ewrp", "type": "section", "content": {"title": ""}, "handlers": {}, "isCodeManaged": false, "parentId": "181cq1mpgw34i8dl", "position": 1}
+{"id": "0na7dihjazzdlbjf", "type": "columns", "content": {}, "handlers": {}, "isCodeManaged": false, "parentId": "3yv1o3158qk6ewrp", "position": 0}
+{"id": "yl0x2lefilp1xnl6", "type": "column", "content": {"width": "13"}, "handlers": {}, "isCodeManaged": false, "parentId": "0na7dihjazzdlbjf", "position": 0}
+{"id": "t76ns9nd93w1aaac", "type": "chatbot", "content": {"conversation": "@{conversation}", "useMarkdown": "yes"}, "handlers": {"wf-chatbot-message": "user_message"}, "isCodeManaged": false, "parentId": "yl0x2lefilp1xnl6", "position": 0}
+{"id": "4dyb1959ehmz6hoh", "type": "text", "content": {"text": "@{contributing_sources_button_text}"}, "handlers": {"wf-click": "contributing_sources_change_vis"}, "isCodeManaged": false, "parentId": "yl0x2lefilp1xnl6", "position": 1}
+{"id": "6gunwa2x9r6fw6c4", "type": "column", "content": {"title": "Contributing sources", "width": "7"}, "handlers": {}, "isCodeManaged": false, "parentId": "0na7dihjazzdlbjf", "position": 1, "visible": {"binding": "contributing_sources_vis", "expression": "custom", "reversed": false}}
+{"id": "rfpjjy0krwyn5cfo", "type": "columns", "content": {}, "handlers": {}, "isCodeManaged": false, "parentId": "6gunwa2x9r6fw6c4", "position": 0}
+{"id": "h8gtll4cw37fh3hf", "type": "column", "content": {"cssClasses": "files-list", "width": "1"}, "handlers": {}, "isCodeManaged": false, "parentId": "rfpjjy0krwyn5cfo", "position": 0}
+{"id": "gq06l9kpvbeqkee1", "type": "repeater", "content": {"keyVariable": "index", "repeaterObject": "@{contributing_sources}", "valueVariable": "file"}, "handlers": {}, "isCodeManaged": false, "parentId": "h8gtll4cw37fh3hf", "position": 0}
+{"id": "0ggjzzhqd8vgttkg", "type": "section", "content": {"cssClasses": "@{file.file_css}", "title": ""}, "handlers": {}, "isCodeManaged": false, "parentId": "gq06l9kpvbeqkee1", "position": 0}
+{"id": "avu7ft9wkylm5mho", "type": "text", "content": {"text": "#### @{file.name}", "useMarkdown": "yes"}, "handlers": {}, "isCodeManaged": false, "parentId": "0ggjzzhqd8vgttkg", "position": 0}
+{"id": "nnirvi5yma8wsswp", "type": "text", "content": {"cssClasses": "@{file.content_css}", "text": "@{file.content}"}, "handlers": {}, "isCodeManaged": false, "parentId": "0ggjzzhqd8vgttkg", "position": 1}

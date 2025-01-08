@@ -163,6 +163,7 @@ async def _upload_file_and_add_to_graph(
         file_id = await _upload_file(client, file_data, file_name)
         await _add_file_to_graph(client, graph_id, file_id)
         return {"file_id": file_id, "graph_id": graph_id}
+
     except Exception as e:
         print(f"An error while file uploading occurred: {str(e)}")
         return {}
