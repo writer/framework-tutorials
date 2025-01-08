@@ -1,0 +1,29 @@
+.adv-reactions-scroller{
+    height: 60.47vh !important;
+    overflow-y: auto !important;
+}
+
+.prescr-info-scroller{
+    height: 60vh !important;
+    overflow-y: auto !important;
+}
+
+.pubmed-scroller{
+    height: 69.96vh !important;
+    overflow-y: auto !important;
+}
+
+.file{
+    height: 60vh !important;
+    overflow-x: auto !important;
+}
+
+.file-text{
+    height: 51vh !important;
+    overflow-y: auto !important;
+}
+
+.files-list{
+    height: 79vh !important;
+    overflow-y: auto !important;
+}
