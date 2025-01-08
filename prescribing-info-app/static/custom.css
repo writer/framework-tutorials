@@ -14,12 +14,11 @@
 }
 
 .file{
-    height: 60vh !important;
     overflow-x: auto !important;
 }
 
 .file-text{
-    height: 51vh !important;
+    height: 40vh !important;
     overflow-y: auto !important;
 }
 

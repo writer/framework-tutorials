@@ -174,4 +174,4 @@ initial_state = wf.init_state(
     }
 )
 
-initial_state.import_stylesheet("style", "/static/custom.css?115")
+initial_state.import_stylesheet("style", "/static/custom.css?1")
