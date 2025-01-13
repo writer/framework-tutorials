@@ -37,9 +37,10 @@ def update_drug_data(state: WriterState, drug_name: str) -> None:
     state["prescribing_info_summary"] = ""
 
     for chunk in stream_complete(
-        prescribing_summary_prompt.format(
+        initial_text=prescribing_summary_prompt.format(
             prescribing_details=state["raw_prescribing_info"]
-        )
+        ),
+        config={"model": "palmyra-med"}
     ):
         state["prescribing_info_summary"] += chunk
 
@@ -174,4 +175,4 @@ initial_state = wf.init_state(
     }
 )
 
-initial_state.import_stylesheet("style", "/static/custom.css?1")
+initial_state.import_stylesheet("style", "/static/custom.css")
